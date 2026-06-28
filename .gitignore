@@ -1,0 +1,9 @@
+.idea/
+data/
+/datasets/*
+!/datasets/.gitignore
+!/datasets/README.md
+__pycache__/
+*.pyc
+*.tgz
+*.iml
