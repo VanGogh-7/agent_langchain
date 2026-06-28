@@ -1,0 +1,161 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  color: #202124;
+  background: #f5f7fa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 1px solid #1f5f8b;
+  border-radius: 4px;
+  padding: 0.55rem 0.8rem;
+  color: #ffffff;
+  background: #1f5f8b;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #184b70;
+}
+
+button.danger {
+  border-color: #a23b3b;
+  background: #a23b3b;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid #c7ced6;
+  border-radius: 4px;
+  padding: 0.5rem;
+  background: #ffffff;
+}
+
+label {
+  display: grid;
+  gap: 0.25rem;
+  font-weight: 600;
+}
+
+.page {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.page-header h1,
+.panel h2,
+.panel h3 {
+  margin-top: 0;
+}
+
+.panel {
+  margin-bottom: 1rem;
+  border: 1px solid #d9dee5;
+  border-radius: 6px;
+  padding: 1rem;
+  background: #ffffff;
+}
+
+.forms-grid,
+.resource-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.resource-form button {
+  align-self: end;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.list-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: minmax(160px, 1fr) 160px auto;
+  gap: 0.5rem;
+}
+
+.message {
+  min-height: 1.5rem;
+  color: #8a3b00;
+}
+
+.resource-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resource-item {
+  display: grid;
+  gap: 0.5rem;
+  border: 1px solid #d9dee5;
+  border-radius: 6px;
+  padding: 0.85rem;
+}
+
+.resource-item header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.resource-item h3,
+.resource-item p {
+  margin: 0;
+}
+
+.meta {
+  color: #5f6975;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 720px) {
+  .page-header,
+  .list-header,
+  .resource-item header {
+    display: grid;
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
+}
