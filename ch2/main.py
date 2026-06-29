@@ -1,20 +1,20 @@
 import os
 from pathlib import Path
-
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
+from langchain_core.prompts import PromptTemplate
 
 project_root = Path(__file__).resolve().parents[1]
 load_dotenv(project_root / ".env")
-
-def generate_text_summary_prompt(text, num_words, tone):
-    return f"You are an experienced copywriter. Write a {num_words} words summary the the following text, using a {tone} tone: {text}"
 
 llm = ChatOpenAI(
     model="deepseek-v4-flash",
     api_key=os.getenv("DEEPSEEK_API_KEY"),
     base_url="https://api.deepseek.com",
 )
+
+prompt_template = PromptTemplate.from_template("""You are an experienced copywriter.
+Write a {num_words} words summary of the following text, using a {tone} tone: {text}""")
 
 segovia_aqueduct_text = """The Aqueduct of Segovia (Spanish: 
 Acueducto de Segovia) is a Roman aqueduct in Segovia, Spain. 
@@ -44,10 +44,11 @@ after 112 AD, during the government of Trajan or in the
 beginning of the government of emperor Hadrian, 
 from 117 AD."""
 
-input_prompt = generate_text_summary_prompt(
+prompt = prompt_template.format(
     text=segovia_aqueduct_text,
-    num_words=20,
-    tone="knowledgeable and engaging")
+    num_words = 20,
+    tone = "knowledgeable and engaging"
+)
 
-response = llm.invoke(input_prompt)
+response = llm.invoke(prompt)
 print(response.content)
